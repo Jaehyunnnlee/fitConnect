@@ -16,4 +16,4 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 
 |메인페이지|
 |------|
-|<img src="[/img/myImg.png](https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/645d80a3-030b-4977-8f75-8fa29a7e5394)" width="300" height="300">|
+|<img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/645d80a3-030b-4977-8f75-8fa29a7e5394" width="300" height="300">|
