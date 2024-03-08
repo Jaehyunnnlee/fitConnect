@@ -12,4 +12,4 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 -댓글/답글 기능
 
 # Stacks
-<img src="https://img.shields.io/badge/springBoot-6DB33F?style=for-the-badge&logo=&logoColor=white">
+<img src="https://img.shields.io/badge/springBoot-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
