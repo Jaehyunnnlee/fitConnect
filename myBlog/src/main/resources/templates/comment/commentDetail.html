@@ -35,7 +35,7 @@
     <tr th:each="reply, index: ${replyList}">
         <td th:text="${reply.getCommentNum()}"></td>
         <td th:text="${reply.getReplyContent()}"></td>
-        <td th:text="${comment.getUserId()}"></td>
+        <td th:text="${reply.getUserId()}"></td>
         <td th:text="${#temporals.format(reply.modifiedAt, 'yy-MM-dd HH:mm')}"></td>
         <div sec:authorize="isAuthenticated()">
             <div class="button-container" th:if="${reply.getUserId() == userInfo.getUsername()}">
