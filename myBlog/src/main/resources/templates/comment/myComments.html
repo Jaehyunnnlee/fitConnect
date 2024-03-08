@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <title>게시물 목록</title>
+</head>
+<body>
+<h2>Connect Zone</h2>
+<nav th:replace="~{fragments/navbar::nav}"></nav>
+
+<table>
+    <thead>
+    <tr>
+        <th>게시글</th>
+        <th>댓글 내용</th>
+        <th>작성자</th>
+        <th>최종 수정일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="comment, index: ${myComments}">
+        <td>
+            <a th:href="@{|/board/post/${comment.postNum}|}" th:text="${comment.getPostNum()}"></a>
+        </td>
+        <td th:text="${comment.getCommentContent()}"></td>
+        <td th:text="${comment.getUserId()}"></td>
+        <td th:text="${#temporals.format(comment.modifiedAt, 'yy-MM-dd HH:mm')}"></td>
+    </tbody>
+</table>
+</body>
+</html>

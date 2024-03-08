@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <title>게시글</title>
+</head>
+<body>
+    <h2>Connect Zone</h2>
+    <nav th:replace="~{fragments/navbar::nav}"></nav>
+
+    <table>
+        <thead>
+            <tr>
+                <th><span th:text="${post.getPostTitle()}"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span th:text="${post.getPostContent()}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+    <div sec:authorize="isAuthenticated()">
+        <div class="button-container" th:if="${post.getUserId() == userInfo.getUsername()}">
+            <form th:action="@{/board/updatePost/{postNum}(postNum=${post.getPostNum()})}" method="get">
+                <button type="submit">수정</button>
+            </form>
+            <form th:action="@{/board/deletePost/{postNum}(postNum=${post.getPostNum()})}" method="get">
+                <button type="submit">삭제</button>
+            </form>
+        </div>
+        <form id="commentForm" th:action="@{'/board/post/'+${post.getPostNum()}+'/comment/write'}" method="post">
+            <h4>댓글 작성</h4>
+            <textarea id="commentContent" name="commentContent"></textarea>
+            <input type="hidden" id="postNum" name="postNum" th:value="${post.getPostNum()}">
+            <button type="submit">작성</button>
+        </form>
+    </div>
+    <a href="/board/posts"><button type="submit">게시판으로 돌아가기</button></a>
+    <h4>댓글</h4>
+    <table>
+        <tbody>
+        <tr th:each="comment, index: ${commentList}">
+            <td th:text="${comment.getPostNum()}"></td>
+            <td th:text="${comment.commentContent}"></td>
+            <td th:text="${comment.getUserId()}"></td>
+            <td th:text="${#temporals.format(comment.modifiedAt, 'yy-MM-dd HH:mm')}"></td>
+            <td><a th:href="@{/comment/{commentNum}(commentNum=${comment.getCommentNum()})}">답글</a></td>
+            <div sec:authorize="isAuthenticated()">
+                <div class="button-container" th:if="${comment.getUserId() == userInfo.getUsername()}">
+                    <td><a th:href="@{/board/post/{postNum}/deleteComment/{commentNum}(postNum=${post.getPostNum()}, commentNum=${comment.getCommentNum()})}" methods="get">삭제</a></td>
+                </div>
+                <div th:unless="${comment.getUserId()==userInfo.getUsername()}">
+                    <td></td>
+                </div>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

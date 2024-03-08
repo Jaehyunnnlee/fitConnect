@@ -1,0 +1,27 @@
+<!-- HTML 파일에 추가 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/writePost.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <title>Post</title>
+</head>
+<body>
+
+<h2>Post</h2>
+<nav th:replace="~{fragments/navbar::nav}"></nav>
+
+<form id="updatePost" class="container" method="post" th:action="@{/board/updatePost/{postNum}(postNum=${postNum})}">
+    <label for="postTitle">제목</label>
+    <input type="text" id="postTitle" name="postTitle" required placeholder="제목을 입력하세요">
+    <label for="postContent">내용</label>
+    <textarea id="postContent" name="postContent" rows="10" cols="50"></textarea>
+    <button type="submit">작성</button>
+</form>
+<script>
+
+</script>
+</body>
+</html>
