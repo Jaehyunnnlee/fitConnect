@@ -21,10 +21,6 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 ### Deploy
 <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"> <img src="https://img.shields.io/badge/amazonrds-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white"> <img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
 
-[fitConnect Web](http://18.224.105.242:8080)
-
-[fitConnect API 명세서](https://documenter.getpostman.com/view/32546490/2sA35EZ2k4)
-
 # result
 
 [fitConnect Web](http://18.224.105.242:8080)
