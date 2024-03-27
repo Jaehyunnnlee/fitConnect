@@ -23,7 +23,7 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 
 [fitConnect Web](http://18.224.105.242:8080)
 
-[fitConnect API 명세서](https://go.postman.co/workspace/My-Workspace~e0992ba0-7555-4312-8a0f-1f47e59266fa/documentation/32546490-ba2aefb1-cafe-4eb0-9d91-4b24165613a0?entity=folder-14fe8493-eb3a-41fa-83d5-5f58e178c012)
+[fitConnect API 명세서](https://documenter.getpostman.com/view/32546490/2sA35EZ2k4)
 
 # result
 
