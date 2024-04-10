@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 public class ReplyResonseDto {
     private Long replyNum;
     private String replyContent;
-    private String userId;
+    private String userName;
     private LocalDateTime modifiedAt;
     private Long commentNum;
 
     public ReplyResonseDto(Reply entity){
         this.replyNum=entity.getReplyNum();
         this.replyContent=entity.getReplyContent();
-        this.userId=entity.getUser().getUserId();
+        this.userName=entity.getUser().getUserName();
         this.modifiedAt = entity.getModifiedAt();
         this.commentNum=entity.getComment().getCommentNum();
     }

@@ -10,12 +10,12 @@ public class ReplyRequestDto {
     private Long replyNum;
     private String replyContent;
     private User user;
-    private String userId;
+    private String userName;
     private Comment comment;
     private Long commentNum;
 
     public void setUser(User user) {
         this.user = user;
-        this.userId = user.getUserId();
+        this.userName = user.getUserName();
     }
 }

@@ -11,12 +11,12 @@ public class CommentRequestDto {
     private Long commentNum;
     private String commentContent;
     private User user;
-    private String userId;
+    private String userName;
     private Board board;
     private Long postNum;
 
     public void setUser(User user) {
         this.user = user;
-        this.userId = user.getUserId();
+        this.userName = user.getUserName();
     }
 }

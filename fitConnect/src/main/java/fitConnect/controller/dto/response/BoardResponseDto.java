@@ -12,14 +12,14 @@ public class BoardResponseDto {
     private Long postNum;
     private String postTitle;
     private String postContent;
-    private String userId;
+    private String userName;
     private LocalDateTime modifiedAt;
 
     public BoardResponseDto(Board entity){
         this.postNum=entity.getPostNum();
         this.postTitle=entity.getPostTitle();
         this.postContent=entity.getPostContent();
-        this.userId=entity.getUser().getUserId();
+        this.userName=entity.getUser().getUserName();
         this.modifiedAt = entity.getModifiedAt();
     }
 }

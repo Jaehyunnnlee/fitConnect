@@ -15,8 +15,8 @@
         <label for="userId">ID</label>
         <input type="text" id="userId" name="userId" required placeholder="아이디를 입력하세요">
 
-        <label for="userName">Name</label>
-        <input type="text" id="userName" name="userName" required placeholder="이름을 입력하세요">
+        <label for="userName">NickName</label>
+        <input type="text" id="userName" name="userName" required placeholder="닉네임을 입력하세요">
 
         <label for="userPwd">Password</label>
         <input type="password" id="userPwd" name="userPwd" required placeholder="비밀번호를 입력하세요">
@@ -48,7 +48,7 @@
                 data: JSON.stringify(formData),
                 success: function (response) {
                     // 성공적으로 게시글이 작성되면 메시지 표시
-                    alert('회원가입이 성공.');
+                    alert('회원가입 성공.');
                     // 폼 초기화
                     $('#userId').val('');
                     $('#userName').val('');

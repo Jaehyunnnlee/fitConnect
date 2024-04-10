@@ -22,8 +22,12 @@ public class UserService{
     @Transactional
     public UserResponseDto signupAccount(UserRequestDto requestDto){
         String userId=requestDto.getUserId();
+        String userName=requestDto.getUserName();
         if(userRepository.existsByUserId(userId)){
             throw new IllegalArgumentException("이미 사용 중인 아이디입니다.");
+        }
+        else if(userRepository.existsByUserName(userName)){
+            throw new IllegalArgumentException("이미 사용 중인 닉네임입니다.");
         }
         else if(!requestDto.getUserPwd().equals(requestDto.getUserPwdConfirm())){
             throw new IllegalArgumentException("비밀번호가 서로 일치하지 않습니다.");
