@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" modified="2024-04-02T06:54:54.508Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="6V7tYQwpviC7R0uvAJHk" version="24.2.1" type="device">
+  <diagram name="페이지-1" id="EDiAYhFM-yEPiSPodOHq">
+    <mxGraphModel dx="1434" dy="772" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-14" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;dashed=1;glass=0;" vertex="1" parent="1">
+          <mxGeometry x="68" y="257" width="735" height="277" as="geometry" />
+        </mxCell>
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-2" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="155" y="333" width="259" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-4" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://amenys.com/wp-content/uploads/2020/01/AWS_EC2.png;" vertex="1" parent="1">
+          <mxGeometry x="226.98" y="265" width="127" height="127" as="geometry" />
+        </mxCell>
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-5" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://images.velog.io/images/linger0310/post/4476b077-5c7e-4ac9-af2e-756363b14294/%EC%8A%A4%ED%94%84%EB%A7%81.png;" vertex="1" parent="1">
+          <mxGeometry x="213.02999999999997" y="408" width="140.95" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-11" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://miro.medium.com/v2/resize:fit:800/1*KqNnfYtaVshGXbuGUCTOQw.png;" vertex="1" parent="1">
+          <mxGeometry x="554" y="383" width="185.6" height="116" as="geometry" />
+        </mxCell>
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-13" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://blog.kakaocdn.net/dn/bHtI0M/btrlXwcnV06/ZrRhhryKnfeoJt7KLvOCwK/img.png;" vertex="1" parent="1">
+          <mxGeometry x="352" y="188" width="187.5" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-17" value="User, board, comment, reply&amp;nbsp;&lt;div&gt;Data&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="366" y="383" width="198" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="W6khgVbqQn5D6TKJ6kTx-18" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="W6khgVbqQn5D6TKJ6kTx-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="369" y="441" as="sourcePoint" />
+            <mxPoint x="507" y="414" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: dimgrey;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    padding: 20px;
+    background-color: darkgrey;
+    color: black;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 30%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px;
+}
+
+th, td {
+    padding: 30px; /* 셀 안의 여백을 줄임 */
+    text-align: center;
+    border-bottom: 4px solid darkgrey;
+    border-right: 4px solid darkgrey;
+    border-left: 4px  solid darkgrey;
+    border-top: 4px  solid darkgrey;
+}
+
+th {
+    background-color: darkolivegreen;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+button{
+    background-color: darkolivegreen;
+    color: #fff;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+.button form{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+

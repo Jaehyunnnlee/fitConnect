@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <title>게시글</title>
+</head>
+<body>
+<h2>Connect Zone</h2>
+<nav th:replace="~{fragments/navbar::nav}"></nav>
+
+<h4>게시글</h4>
+<table>
+    <thead id="postHeadTable">
+    <tr>
+        <th id="postTitle"></th>
+    </tr>
+    </thead>
+    <tbody id="postBodyTable">
+    <tr>
+        <td id="postContent"></td>
+    </tr>
+    </tbody>
+</table>
+<script th:inline="javascript">
+    var postNum = [[${postNum}]];
+    var currentUserId=null;
+</script>
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+        currentUserId = [[${#authentication.principal.username}]];
+    </script>
+    <div class="button-container" >
+        <form th:action="@{/boards/post/{postNum}/edit(postNum=${postNum})}" method="get">
+            <button type="submit">수정</button>
+        </form>
+        <form th:action="@{/boards/post/{postNum}/delete(postNum=${postNum})}" method="get">
+            <button type="submit">삭제</button>
+        </form>
+    </div>
+    <form id="commentForm" >
+        <h4>댓글 작성</h4>
+        <textarea id="commentContent" name="commentContent"  required placeholder="댓글을 입력하세요"></textarea>
+        <button type="submit">작성</button>
+    </form>
+</div>
+<a href="/boards/posts"><button type="submit">게시판으로 돌아가기</button></a>
+<h4>댓글</h4>
+<table>
+    <tbody id="commentTableBody">
+    </tbody>
+</table>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log(postNum);
+        function loadPost() {
+            $.ajax({
+                type: 'GET',
+                url: '/rest-api/boards/post/' + postNum,
+                success: function (postResponse) {
+                    // 서버에서 받아온 JSON 데이터를 이용하여 HTML을 생성하여 테이블에 추가합니다.
+                    $('#postTitle').text(postResponse.postTitle);
+                    $('#postContent').text(postResponse.postContent);
+                    var userId=postResponse.userId;
+                    if (userId === currentUserId) {
+                        // 게시물 작성자와 현재 로그인한 사용자의 ID가 일치하는 경우
+                        // 수정 및 삭제 버튼 보이기
+                        $('.button-container').show();
+                    } else {
+                        // 게시물 작성자와 현재 로그인한 사용자의 ID가 일치하지 않는 경우
+                        // 수정 및 삭제 버튼 숨기기
+                        $('.button-container').hide();
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to load post details:', error);
+                }
+            });
+        }
+
+        // 서버에서 댓글 정보를 가져와서 테이블에 추가하는 함수
+        function loadComments() {
+            $.ajax({
+                type: 'GET',
+                url: '/rest-api/posts/' + postNum + '/comments',
+                success: function (commentResponseList) {
+                    // 서버에서 받아온 JSON 데이터를 이용하여 HTML을 생성하여 테이블에 추가합니다.
+                    var commentTableBody = $('#commentTableBody');
+                    commentTableBody.empty(); // 기존 데이터 삭제
+                    commentResponseList.forEach(function (commentResponse) {
+                        var modifiedAt = new Date(commentResponse.modifiedAt);
+                        var formattedModifiedAt = ("0" + (modifiedAt.getFullYear() % 100)).slice(-2) + "-" + ("0" + (modifiedAt.getMonth() + 1)).slice(-2) + "-" + ("0" + modifiedAt.getDate()).slice(-2) + " " + ("0" + modifiedAt.getHours()).slice(-2) + ":" + ("0" + modifiedAt.getMinutes()).slice(-2);
+                        if(commentResponse.userId===currentUserId){
+                            var row = '<tr>' +
+                                '<td>' + commentResponse.postNum + '</td>' +
+                                '<td>' + commentResponse.commentContent + '</td>' +
+                                '<td>' + commentResponse.userId + '</td>' +
+                                '<td>' + formattedModifiedAt + '</td>' +
+                                '<td><a href="/posts/'+postNum+'/comments/' + commentResponse.commentNum + '">답글</a></td>' +
+                                '<td><a href="/posts/'+postNum+'/comments/' + commentResponse.commentNum + '/delete ">삭제</a></td>'+
+                                '</tr>';
+                        }else{
+                            var row = '<tr>' +
+                                '<td>' + commentResponse.postNum + '</td>' +
+                                '<td>' + commentResponse.commentContent + '</td>' +
+                                '<td>' + commentResponse.userId + '</td>' +
+                                '<td>' + formattedModifiedAt + '</td>' +
+                                '<td><a href="/posts/'+postNum+'/comments/' + commentResponse.commentNum + '">답글</a></td>' +
+                                '<td></td>'+
+                                '</tr>';
+                        }
+                        commentTableBody.append(row);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to load comments:', error);
+                }
+            });
+        }
+
+        $('#commentForm').submit(function (event) {
+            event.preventDefault(); // 폼의 기본 동작 방지
+
+            // 폼 데이터 가져오기
+            var formData = {
+                commentContent: $('#commentContent').val(),
+            };
+
+            // REST API에 POST 요청 수행
+            $.ajax({
+                type: 'POST',
+                url: '/rest-api/posts/'+postNum+'/comments', // 컨트롤러의 엔드포인트 URL로 변경해야 합니다.
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    // 성공적으로 게시글이 작성되면 메시지 표시
+                    alert('댓글이 작성되었습니다.');
+                    // 폼 초기화
+                    $('#commentContent').val('');
+                    window.location.href='/boards/post/'+postNum;
+                },
+                error: function (xhr, status, error) {
+                    // 오류 발생 시 오류 메시지 표시
+                    alert(xhr.responseText);
+                }
+            });
+        });
+        // 페이지 로드 시 게시물 정보와 댓글 정보를 로드합니다.
+        loadPost();
+        loadComments();
+    });
+</script>
+</body>
+</html>

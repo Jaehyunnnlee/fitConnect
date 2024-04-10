@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <title>Title</title>
+</head>
+<body>
+<h2>Connect Zone</h2>
+<nav th:replace="~{fragments/navbar::nav}"></nav>
+
+<h4>댓글</h4>
+<script th:inline="javascript">
+    var commentNum = [[${commentNum}]];
+    var postNum=[[${postNum}]];
+    var currentUserId=null;
+</script>
+<table>
+    <tbody id="commentTableBody">
+        <td id="commentContent"></td>
+    </tbody>
+</table>
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+        currentUserId = [[${#authentication.principal.username}]];
+    </script>
+    <div class="button-container" >
+        <form th:action="@{/posts/{postNum}/comments/{commentNum}/delete (commentNum=${commentNum}, postNum=${postNum})}" method="get">
+            <button type="submit">삭제</button>
+        </form>
+    </div>
+    <form id="replyForm">
+        <h4>답글 작성</h4>
+        <textarea id="replyContent" name="replyContent"></textarea>
+        <button type="submit">작성</button>
+    </form>
+</div>
+<a th:href="@{/boards/post/{postNum}(postNum=${postNum})}"><button type="submit">게시글로 돌아가기</button></a>
+<h4>답글</h4>
+<table>
+    <tbody id="replyListTableBody">
+
+    </tbody>
+</table>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function loadComment() {
+            $.ajax({
+                type: 'GET',
+                url: '/rest-api/comments/' + commentNum,
+                success: function (commentResponse) {
+                    // 서버에서 받아온 JSON 데이터를 이용하여 HTML을 생성하여 테이블에 추가합니다.
+                    $('#commentContent').text(commentResponse.commentContent);
+                    var userId=commentResponse.userId;
+                    if (userId === currentUserId) {
+                        // 게시물 작성자와 현재 로그인한 사용자의 ID가 일치하는 경우
+                        // 수정 및 삭제 버튼 보이기
+                        $('.button-container').show();
+                    } else {
+                        // 게시물 작성자와 현재 로그인한 사용자의 ID가 일치하지 않는 경우
+                        // 수정 및 삭제 버튼 숨기기
+                        $('.button-container').hide();
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to load post details:', error);
+                }
+            });
+        }
+
+        // 서버에서 답글 정보를 가져와서 테이블에 추가하는 함수
+        function loadReplies() {
+            $.ajax({
+                type: 'GET',
+                url: '/rest-api/comments/'+commentNum+'/replies',
+                success: function (replyResponseList) {
+                    // 서버에서 받아온 JSON 데이터를 이용하여 HTML을 생성하여 테이블에 추가합니다.
+                    var replyListTableBody = $('#replyListTableBody');
+                    replyListTableBody.empty(); // 기존 데이터 삭제
+                    replyResponseList.forEach(function (replyResponse) {
+                        var modifiedAt = new Date(replyResponse.modifiedAt);
+                        var formattedModifiedAt = ("0" + (modifiedAt.getFullYear() % 100)).slice(-2) + "-" + ("0" + (modifiedAt.getMonth() + 1)).slice(-2) + "-" + ("0" + modifiedAt.getDate()).slice(-2) + " " + ("0" + modifiedAt.getHours()).slice(-2) + ":" + ("0" + modifiedAt.getMinutes()).slice(-2);
+                        if(replyResponse.userId===currentUserId){
+                            var row = '<tr>' +
+                                '<td>' + replyResponse.commentNum + '</td>' +
+                                '<td>' + replyResponse.replyContent + '</td>' +
+                                '<td>' + replyResponse.userId + '</td>' +
+                                '<td>' + formattedModifiedAt + '</td>' +
+                                '<td><a href="/posts/'+postNum+'/comment/'+replyResponse.commentNum+'/reply/'+replyResponse.replyNum+'/delete">삭제</a></td>'+
+                                '</tr>';
+                        }else{
+                            var row = '<tr>' +
+                                '<td>' + replyResponse.commentNum + '</td>' +
+                                '<td>' + replyResponse.replyContent + '</td>' +
+                                '<td>' + replyResponse.userId + '</td>' +
+                                '<td>' + formattedModifiedAt + '</td>' +
+                                '<td></td>'+
+                                '</tr>';
+                        }
+                        replyListTableBody.append(row);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to load comments:', error);
+                }
+            });
+        }
+
+        $('#replyForm').submit(function (event) {
+            event.preventDefault(); // 폼의 기본 동작 방지
+
+            // 폼 데이터 가져오기
+            var formData = {
+                replyContent: $('#replyContent').val(),
+            };
+
+            // REST API에 POST 요청 수행
+            $.ajax({
+                type: 'POST',
+                url: '/rest-api/comments/'+commentNum+'/replies', // 컨트롤러의 엔드포인트 URL로 변경해야 합니다.
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    // 성공적으로 게시글이 작성되면 메시지 표시
+                    alert('답글이 작성되었습니다.');
+                    // 폼 초기화
+                    $('#replyContent').val('');
+                    window.location.href='/posts/'+postNum+'/comments/'+commentNum;
+                },
+                error: function (xhr, status, error) {
+                    // 오류 발생 시 오류 메시지 표시
+                    alert(xhr.responseText);
+                }
+            });
+        });
+        // 페이지 로드 시 게시물 정보와 댓글 정보를 로드합니다.
+        loadComment();
+        loadReplies();
+    });
+</script>
+</body>
+</html>

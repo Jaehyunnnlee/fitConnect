@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/loginstyle.css">
+    <title>계정 삭제</title>
+</head>
+<body>
+
+<h2>게시글 삭제</h2>
+<div class="container">
+    <div class="button">
+        <form id="deletePost">
+            <p>정말 게시글을 삭제하시겠습니까?</p>
+            <button type="submit">확인</button>
+        </form>
+        <form id="deletePostCancel">
+            <button type="submit">취소</button>
+        </form>
+    </div>
+</div>
+
+
+<script th:inline="javascript">
+    var postNum = [[${postNum}]];
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // 폼 제출 시 AJAX 요청 수행
+        $('#deletePost').submit(function (event) {
+            event.preventDefault(); // 폼의 기본 동작 방지
+
+            // REST API에 POST 요청 수행
+            $.ajax({
+                type: 'DELETE',
+                url: '/rest-api/boards/post/'+postNum, // 컨트롤러의 엔드포인트 URL로 변경해야 합니다.
+                contentType: 'application/json',
+                success: function (response) {
+                    // 성공적으로 게시글이 작성되면 메시지 표시
+                    alert('게시글이 성공적으로 삭제되었습니다.');
+                    window.location.href='/boards/posts';
+                },
+                error: function (xhr, status, error) {
+                    // 오류 발생 시 오류 메시지 표시
+                    alert(xhr.responseText);
+                }
+            });
+        });
+
+
+        $('#deletePostCancel').submit(function (event) {
+            event.preventDefault(); // 폼의 기본 동작 방지
+
+            // REST API에 POST 요청 수행
+            $.ajax({
+                type: 'GET',
+                url: '/boards/post/'+postNum, // 컨트롤러의 엔드포인트 URL로 변경해야 합니다.
+                contentType: 'application/json',
+                success: function (response) {
+                    // 성공적으로 게시글이 작성되면 메시지 표시
+                    alert('게시글로 이동합니다.');
+                    window.location.href='/boards/post/'+postNum;
+                },
+                error: function (xhr, status, error) {
+                    // 오류 발생 시 오류 메시지 표시
+                    alert(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
