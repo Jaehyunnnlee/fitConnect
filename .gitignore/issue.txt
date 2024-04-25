@@ -1,7 +1,0 @@
--첫 배포 이슈들
-백그라운드 적용(nohup) kill하는 방법(kill -9 {processId})
-processId 아는법 -> sudo lsof -t -i:8080
-build 후 jar파일 windows->aws서버(파일질라 이용)
-RDS와 서버 연동(application.properties)
-
-

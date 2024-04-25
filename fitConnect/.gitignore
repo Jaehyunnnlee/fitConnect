@@ -42,5 +42,5 @@ application.properties
 ### Querydsl
 /src/main/generated
 
-#.gitignore 폴더
-/.gitignore
+#gitignore 폴더
+/gitignore
