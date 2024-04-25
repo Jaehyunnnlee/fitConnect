@@ -43,4 +43,4 @@ application.properties
 /src/main/generated
 
 #.gitignore 폴더
-../.gitignore/
+/.gitignore
