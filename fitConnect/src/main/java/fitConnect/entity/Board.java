@@ -1,12 +1,12 @@
 package fitConnect.entity;
 
+import fitConnect.controller.dto.BoardRequestDto;
+import fitConnect.entity.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import fitConnect.controller.dto.BoardRequestDto;
-import fitConnect.entity.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,24 +15,25 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+
 public class Board extends Timestamped{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="NUM",nullable = false)
+    @Column(name="post_num",nullable = false)
     private Long postNum;
 
-    @Column(name="TITLE",nullable = false,length=30)
+    @Column(name="post_title",nullable = false,length=30)
     private String postTitle;
 
-    @Column(name="CONTENT",nullable = false,length = 300)
+    @Column(name="post_content",nullable = false,length = 300)
     private String postContent;
 
     @ManyToOne
-    @JoinColumn(name = "userid", referencedColumnName = "userid", columnDefinition = "VARCHAR(255)", nullable = false)
+    @JoinColumn(name = "post_user_id", referencedColumnName = "user_id", columnDefinition = "VARCHAR(255)", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "board", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 
 

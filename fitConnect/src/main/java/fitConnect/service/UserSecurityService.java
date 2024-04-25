@@ -25,6 +25,7 @@ public class UserSecurityService implements UserDetailsService {
         if(loginUser.isEmpty()){
             throw new UsernameNotFoundException("존재하지 않는 회원입니다.");
         }
+
         User user=loginUser.get();
         String realName=user.getUserName();
         LocalDateTime createdAt=user.getCreateAt();

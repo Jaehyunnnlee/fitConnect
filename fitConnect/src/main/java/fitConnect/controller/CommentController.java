@@ -24,6 +24,6 @@ public class CommentController {
     }
     @GetMapping("/comments/my-comments")
     public String myComments(){
-        return "comment/myComments";
+        return "comment/my-comments-bootstrap";
     }
 }

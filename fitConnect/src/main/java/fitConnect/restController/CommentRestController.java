@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import fitConnect.controller.dto.CommentRequestDto;
 import fitConnect.controller.dto.response.CommentResponseDto;
 import fitConnect.service.CommentService;
-import fitConnect.service.ReplyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentRestController {
     private final CommentService commentService;
-    private final ReplyService replyService;
+
     @PostMapping("/rest-api/posts/{id}/comments")
     public ResponseEntity<?> writeComment(@PathVariable("id") Long postNum, @RequestBody CommentRequestDto requestDto, Authentication authentication) {
         try{
@@ -25,6 +24,20 @@ public class CommentRestController {
         }catch (IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+    @PostMapping("/rest-api/posts/{id}/comments/{commentNum}/replies")
+    public ResponseEntity<?> writeReply(@PathVariable("id") Long postNum,@PathVariable("commentNum") Long commentNum,@RequestBody CommentRequestDto requestDto, Authentication authentication){
+        try{
+            CommentResponseDto commentResponseDto = commentService.writeReply(postNum,commentNum,requestDto, authentication);
+            return ResponseEntity.ok(commentResponseDto);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+    @GetMapping("/rest-api/posts/{id}/comments/{commentNum}/replies")
+    public ResponseEntity<?> readReplies(@PathVariable("commentNum") Long commentNum){
+        List<CommentResponseDto> replyResponseDtoList=commentService.readReplies(commentNum);
+        return ResponseEntity.ok(replyResponseDtoList);
     }
 
     @GetMapping("/rest-api/posts/{id}/comments")
@@ -66,4 +79,6 @@ public class CommentRestController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+
 }

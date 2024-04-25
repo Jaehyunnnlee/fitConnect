@@ -1,0 +1,2 @@
+//queryDSL gradle문제 해결(recreate 문제)
+https://medium.com/@jina-dev/spring-querydsl-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0-gradle-%EC%84%A4%EC%A0%95-%EA%B0%80%EC%9D%B4%EB%93%9C-1f33847873a2

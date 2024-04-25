@@ -14,24 +14,24 @@ public class BoardController {
 
     @GetMapping("/post")
     public String writePost() {
-        return "board/writePost";
+        return "board/write-bootstrap";
     }
     @GetMapping("/posts")
     public String readPost(){
         return "board/readPost";
     }
-    @GetMapping("my-posts") String myPosts(){
-        return "board/myPosts";
+    @GetMapping("/my-posts") String myPosts(){
+        return "board/my-posts-bootstrap";
     }
     @GetMapping("/post/{postNum}")
     public String selectByPostNum(@PathVariable("postNum")Long postNum, Model model){
         model.addAttribute("postNum",postNum);
-        return "board/postDetail";
+        return "board/read-bootstrap";
     }
     @GetMapping("/post/{postNum}/edit")
     public String updatePost(@PathVariable("postNum")Long postNum,Model model){
         model.addAttribute("postNum",postNum);
-        return "board/updatePost";
+        return "board/edit-bootstrap";
     }
 
     @GetMapping("/post/{postNum}/delete")

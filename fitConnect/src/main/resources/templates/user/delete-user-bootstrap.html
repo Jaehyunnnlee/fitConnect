@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>signup&login</title>
+    <link rel="stylesheet" type="text/css" href="/css/signup-login-bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<div class="login-page">
+    <div class="login-content" style="display: block;">
+        <div>
+            <h2>회원 탈퇴</h2>
+            <form class="wrapper-box" role="form" id="deleteUser-form">
+                <p>정말 탈퇴하시겠습니까?</p>
+                <p>탈퇴하시려면 비밀번호를 입력하세요.</p>
+                <input type="password"
+                       id="userPwd"
+                       class="form-control form-control-email"
+                       placeholder="password"
+                       name="userPwd"
+                       required>
+                <button type="button" class="btn btn-submit btn-default pull-right" id="cancel">취소</button>
+                <button type="submit" class="btn btn-submit btn-default pull-right" id="login-signup-btn">회원 탈퇴</button>
+            </form>
+        </div>
+    </div>
+    <script th:inline="javascript">
+        var userId = [[${#authentication.principal.username}]];
+    </script>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // 폼 제출 시 AJAX 요청 수행
+        $('#deleteUser-form').submit(function (event) {
+            event.preventDefault(); // 폼의 기본 동작 방지
+
+            // 폼 데이터 가져오기
+            var formData = {
+                userPwd: $('#userPwd').val(),
+            };
+
+            var url="/rest-api/users/"+userId
+            // REST API에 POST 요청 수행
+            $.ajax({
+                type: 'DELETE',
+                url: url, // 컨트롤러의 엔드포인트 URL로 변경해야 합니다.
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    // 성공적으로 게시글이 작성되면 메시지 표시
+                    alert('계정이 삭제되었습니다.');
+                    // 폼 초기화
+                    $('#userPwd').val('');
+                    window.location.href='/logout';
+                },
+                error: function (xhr, status, error) {
+                    // 오류 발생 시 오류 메시지 표시
+                    alert(xhr.responseText);
+                }
+            });
+        });
+        $('#cancel').click(function (){
+            window.location.href='/';
+        });
+    });
+</script>
+</body>
+</html>

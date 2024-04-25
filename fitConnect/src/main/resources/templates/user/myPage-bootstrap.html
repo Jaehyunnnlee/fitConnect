@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>마이페이지</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/userDetail.css">
@@ -12,49 +12,50 @@
         .my-page-container {
             padding: 20px;
         }
-
-        .button {
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
-<div class="container my-page-container">
-    <h2 class="text-center">MyPage</h2>
-    <nav th:replace="~{fragments/navbar::nav}"></nav>
-
-    <div class="table-responsive">
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>아이디</th>
-                <td id="userId"></td>
-            </tr>
-            <tr>
-                <th>이름</th>
-                <td id="userName"></td>
-            </tr>
-            <tr>
-                <th>가입일</th>
-                <td id="createdAt"></td>
-            </tr>
-            </tbody>
-        </table>
+<div class="my-page">
+    <div class="my-page-content" style="display: block;">
+        <h2>About me</h2>
     </div>
 
-    <div class="button d-flex justify-content-center">
-        <form action="/users/changePwd" method="get" class="mr-2">
-            <button type="submit" class="btn btn-primary">비밀번호 수정</button>
-        </form>
-        <form action="/users/deleteUser" method="get" class="mr-2">
-            <button type="submit" class="btn btn-danger">계정 삭제</button>
-        </form>
-        <form th:action="@{/boards/my-posts}" method="get" class="mr-2">
-            <button type="submit" class="btn btn-success">내가 쓴 글</button>
-        </form>
-        <form th:action="@{/comments/my-comments}" method="get">
-            <button type="submit" class="btn btn-info">내가 쓴 댓글</button>
-        </form>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>아이디</th>
+                        <td id="userId"></td>
+                    </tr>
+                    <tr>
+                        <th>이름</th>
+                        <td id="userName"></td>
+                    </tr>
+                    <tr>
+                        <th>가입일</th>
+                        <td id="createdAt"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center">
+                <form action="/users/changePwd" method="get" class="mr-2 d-inline">
+                    <button type="submit" class="btn btn-primary">비밀번호 수정</button>
+                </form>
+                <form action="/users/deleteUser" method="get" class="mr-2 d-inline">
+                    <button type="submit" class="btn btn-danger">계정 삭제</button>
+                </form>
+                <form th:action="@{/boards/my-posts}" method="get" class="mr-2 d-inline">
+                    <button type="submit" class="btn btn-success">내가 쓴 글</button>
+                </form>
+                <form th:action="@{/comments/my-comments}" method="get" class="d-inline">
+                    <button type="submit" class="btn btn-info">내가 쓴 댓글</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

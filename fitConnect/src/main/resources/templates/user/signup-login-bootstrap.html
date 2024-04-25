@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>signup&login</title>
+    <link rel="stylesheet" type="text/css" href="/css/signup-login-bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<div class="login-page">
+    <div class="login-content login-content-signin" style="display: block;">
+        <div>
+            <h2>Log in</h2>
+            <form class="wrapper-box" role="form" id="signin-form" action="/login" method="post">
+                <input type="text"
+                       id="signin-email"
+                       class="form-control form-control-email"
+                       placeholder="ID"
+                       name="username"
+                       required>
+                <input type="password"
+                       id="signin-password"
+                       class="form-control form-control-password"
+                       placeholder="Password"
+                       name="password"
+                       required >
+                <!-- <div class="checkbox pull-left">
+                  <label>
+                    <input type="checkbox"> Remember me.
+                  </label>
+                </div> -->
+<!--                <a class="outer-link pull-left" href="#/forgot">Forgot Password</a>-->
+                <button type="submit" class="btn btn-submit btn-default pull-right" id="signin-btn">Log in</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-content login-content-signup" style="display: none;">
+        <div>
+            <h2>Sign Up</h2>
+            <form class="wrapper-box" role="form" id="signup-form">
+                <input type="text"
+                       id="signup-email"
+                       class="form-control form-control-email"
+                       placeholder="ID"
+                       required >
+                <input type="text"
+                       id="signup-username"
+                       class="form-control form-control-username"
+                       placeholder="NickName"
+                       required >
+                <input type="password"
+                       id="signup-password"
+                       class="form-control form-control-password"
+                       placeholder="Password"
+                       required >
+                <input type="password"
+                       id="signup-password-confirm"
+                       class="form-control form-control-password"
+                       placeholder="passwordConfirm"
+                       required>
+                <!-- <div class="checkbox pull-left">
+                  <label>
+                    <input type="checkbox"> Remember me.
+                  </label>
+                </div> -->
+                <button type="submit" class="btn btn-submit btn-default pull-right" id="signup-btn">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-switcher">
+        <div class="login-switcher-signin">
+            <h3>Have an account?</h3>
+            <button id="show-signin-btn">Login</button>
+        </div>
+        <div class="login-switcher-signup">
+            <h3>Don't have an account?</h3>
+            <button id="show-signup-btn">Sign Up</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Show Sign Up form
+        $("#show-signup-btn").click(function() {
+            $(".login-content-signin").hide();
+            $(".login-content-signup").show();
+        });
+
+        // Show Sign In form
+        $("#show-signin-btn").click(function() {
+            $(".login-content-signup").hide();
+            $(".login-content-signin").show();
+        });
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+
+        // 에러 메시지가 있을 경우에만 alert으로 출력
+        if (error) {
+            const decodedError = decodeURIComponent(error);
+            alert(decodedError);
+        }
+
+        $('#signup-form').submit(function (event) {
+            // 폼 데이터 가져오기
+            var formData = {
+                userId: $('#signup-email').val(),
+                userName: $('#signup-username').val(),
+                userPwd: $('#signup-password').val(),
+                userPwdConfirm: $('#signup-password-confirm').val()
+            };
+
+            // REST API에 POST 요청 수행
+            $.ajax({
+                type: 'POST',
+                url: '/rest-api/users/signup', // 컨트롤러의 엔드포인트 URL로 변경해야 합니다.
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    // 성공적으로 회원가입이 완료되면 메시지 표시
+                    alert('회원가입 성공');
+                    // 폼 초기화
+                    $('#signup-email').val('');
+                    $('#signup-username').val('');
+                    $('#signup-password').val('');
+                    $('#signup-password-confirm').val('');
+                    window.location.href = '/users/signup-login';
+                },
+                error: function (xhr, status, error) {
+                    // 오류 발생 시 오류 메시지 표시
+                    alert(xhr.responseText);
+                    window.location.href = '/users/signup-login';
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -13,6 +13,7 @@ public class BoardResponseDto {
     private String postTitle;
     private String postContent;
     private String userName;
+    private String userId;
     private LocalDateTime modifiedAt;
 
     public BoardResponseDto(Board entity){
@@ -20,6 +21,7 @@ public class BoardResponseDto {
         this.postTitle=entity.getPostTitle();
         this.postContent=entity.getPostContent();
         this.userName=entity.getUser().getUserName();
+        this.userId=entity.getUser().getUserId();
         this.modifiedAt = entity.getModifiedAt();
     }
 }

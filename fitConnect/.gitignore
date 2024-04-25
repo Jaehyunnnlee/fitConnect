@@ -38,3 +38,6 @@ out/
 
 ###user settiongs
 application.properties
+
+### Querydsl
+/src/main/generated

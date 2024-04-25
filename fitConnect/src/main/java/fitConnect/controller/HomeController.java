@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class HomeController {
     @GetMapping("/")
     public String index(){
-        return "index/home";
+        return "index/index-bootstrap";
     }
 }
 

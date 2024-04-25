@@ -20,27 +20,23 @@ import java.util.List;
 @NoArgsConstructor()
 public class User extends Timestamped{
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="id",nullable = false)
-    private Long userNum;
-
-    @Column(name="name",nullable = false)
-    private String userName;
-
-    @Column(name="userid",nullable = false)
+    @Column(name="user_id",nullable = false)
     private String userId;
 
-    @Column(name="password",nullable = false)
+    @Column(name="user_name",nullable = false)
+    private String userName;
+
+    @Column(name="user_password",nullable = false)
     private String userPwd;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="role",nullable = false)
+    @Column(name="user_role",nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Board> boards = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
 

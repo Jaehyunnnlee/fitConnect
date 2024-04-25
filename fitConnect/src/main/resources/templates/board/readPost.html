@@ -26,6 +26,7 @@
 </table>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
         // 서버에서 게시물 목록을 가져와서 테이블에 추가하는 함수
@@ -50,6 +51,7 @@
                             '</tr>';
                         tableBody.append(row);
                     });
+                    const dataTable = new simpleDatatables.DataTable("#postTable");
                 },
                 error: function (xhr, status, error) {
                     // 오류 발생 시 처리
@@ -61,5 +63,7 @@
         loadPosts();
     });
 </script>
+
+
 </body>
 </html>

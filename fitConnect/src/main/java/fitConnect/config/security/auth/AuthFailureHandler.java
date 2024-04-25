@@ -32,7 +32,7 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
         }
 
         errorMessage= URLEncoder.encode(errorMessage,"UTF-8");
-        setDefaultFailureUrl("/users/login?error="+errorMessage);
+        setDefaultFailureUrl("/users/signup-login?error="+errorMessage);
         super.onAuthenticationFailure(request,response,exception);
     }
 }
