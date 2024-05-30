@@ -43,8 +43,8 @@ public class BoardService {
         );
     }
 
-    public Optional<List<BoardResponseDto>> getPostsByUserId(String userId) {
-        return boardRepository.findAllByUserUserId(userId)
+    public Optional<List<BoardResponseDto>> getPostsByUserName(String userName) {
+        return boardRepository.findAllByUserUserName(userName)
                 .map(boards -> boards.stream().map(BoardResponseDto::new).toList());
     }
 
