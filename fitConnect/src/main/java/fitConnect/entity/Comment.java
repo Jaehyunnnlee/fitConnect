@@ -24,7 +24,7 @@ public class Comment extends Timestamped{
     @Lob
     private String commentContent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_user_id", referencedColumnName = "user_id", columnDefinition = "VARCHAR(255)", nullable = false)
     private User user;
 
