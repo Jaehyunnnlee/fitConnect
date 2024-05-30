@@ -24,7 +24,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">fitConnect</a>
+    <a class="navbar-brand ps-3">fitConnect</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -54,23 +54,26 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="/#!">
+                    <div class="sb-sidenav-menu-heading">Main</div>
+                    <a class="nav-link" href="/">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        사이드바 수정 예정
+                        Main page
                     </a>
-                    <!--                            <div class="sb-sidenav-menu-heading">Interface</div>-->
-                    <!--                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">-->
-                    <!--                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>-->
-                    <!--                                Layouts-->
-                    <!--                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
-                    <!--                            </a>-->
-                    <!--                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">-->
-                    <!--                                <nav class="sb-sidenav-menu-nested nav">-->
-                    <!--                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>-->
-                    <!--                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>-->
-                    <!--                                </nav>-->
-                    <!--                            </div>-->
+                    <div sec:authorize="isAuthenticated()">
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Routine
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/routines">루틴 기록</a>
+<!--                                <a class="nav-link" href="#!">루틴 생성</a>-->
+                                <a class="nav-link" href="/routines/my-routines">내 루틴 기록 보기</a>
+                            </nav>
+                        </div>
+                    </div>
                     <!--                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">-->
                     <!--                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>-->
                     <!--                                Pages-->
@@ -164,7 +167,7 @@
                                     <h5 class="card-title">댓글 작성</h5>
                                     <form id="comment-form">
                                         <div class="form-group" style="padding-bottom: 10px">
-                                            <textarea class="form-control" id="comment-content" rows="3" placeholder="댓글을 입력하세요"></textarea>
+                                            <textarea class="form-control" id="comment-content" rows="3" placeholder="댓글을 입력하세요" required></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-outline-dark">작성</button>
                                     </form>
@@ -270,7 +273,7 @@
                     // 게시글 제목과 내용을 카드에 표시합니다.
                     $('.card-post-title').text(postTitle);
                     $('.card-subtitle').text(postAuthor + ' | ' + formattedModifiedAt);
-                    $('.card-post-text').text(postContent);
+                    $('.card-post-text').html(postContent);
 
                     // 게시글 작성자와 현재 사용자가 일치하는지 확인하여 수정 및 삭제 버튼을 표시합니다.
                     var userId = postResponse.userId;
