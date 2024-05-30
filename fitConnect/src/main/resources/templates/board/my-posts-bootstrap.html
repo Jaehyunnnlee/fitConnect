@@ -14,7 +14,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">fitConnect</a>
+    <a class="navbar-brand ps-3">fitConnect</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -29,8 +29,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li><a class="dropdown-item" href="/boards/post">글쓰기</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
             </ul>
@@ -42,23 +41,24 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="/#!">
+                    <div class="sb-sidenav-menu-heading">Main</div>
+                    <a class="nav-link" href="/">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        사이드바 수정 예정
+                        Main page
                     </a>
-                    <!--                            <div class="sb-sidenav-menu-heading">Interface</div>-->
-                    <!--                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">-->
-                    <!--                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>-->
-                    <!--                                Layouts-->
-                    <!--                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
-                    <!--                            </a>-->
-                    <!--                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">-->
-                    <!--                                <nav class="sb-sidenav-menu-nested nav">-->
-                    <!--                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>-->
-                    <!--                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>-->
-                    <!--                                </nav>-->
-                    <!--                            </div>-->
+                    <div class="sb-sidenav-menu-heading">Interface</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Routine
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/routines">루틴 기록</a>
+<!--                            <a class="nav-link" href="#!">루틴 생성</a>-->
+                            <a class="nav-link" href="/routines/my-routines">내 루틴 기록 보기</a>
+                        </nav>
+                    </div>
                     <!--                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">-->
                     <!--                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>-->
                     <!--                                Pages-->
@@ -116,9 +116,8 @@
                     <li class="breadcrumb-item active">fitness&connect</li>
                 </ol>
                 <div class="card mb-4">
-                    <div class="card-header">
+                    <div class="card-header" th:text="${userName != null ? userName + '님이 쓴 게시글' : #authentication.principal.realName+'님이 쓴 게시글'}">
                         <i class="fas fa-table me-1"></i>
-                        내가 쓴 게시글
                     </div>
                     <div class="card-body">
                         <table id="myPostTable">
@@ -153,7 +152,8 @@
         </footer>
     </div>
     <script th:inline="javascript">
-        var userId = [[${#authentication.principal.username}]];
+        var userId = [[${#authentication.principal.realName}]];
+        var userName=[[${userName}]];
     </script>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -164,10 +164,13 @@
 <script>
     $(document).ready(function () {
         // 서버에서 게시물 목록을 가져와서 테이블에 추가하는 함수
+        if(userName==null){
+            userName=userId;
+        }
         function loadMyPosts() {
             $.ajax({
                 type: 'GET',
-                url: '/rest-api/boards/users/'+userId+'/posts',
+                url: '/rest-api/boards/users/'+userName+'/posts',
                 success: function (response) {
                     // 서버에서 받아온 JSON 데이터를 이용하여 HTML을 생성하여 테이블에 추가합니다.
                     var posts = response;
