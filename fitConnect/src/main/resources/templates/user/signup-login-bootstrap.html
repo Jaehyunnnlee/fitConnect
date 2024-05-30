@@ -45,16 +45,19 @@
                        class="form-control form-control-email"
                        placeholder="ID"
                        required >
+                <span id="userIdError" class="error"></span><br>
                 <input type="text"
                        id="signup-username"
                        class="form-control form-control-username"
-                       placeholder="NickName"
+                       placeholder="NickName(특수문자 제외 2~10자리)"
                        required >
+                <span id="userNameError" class="error"></span><br>
                 <input type="password"
                        id="signup-password"
                        class="form-control form-control-password"
-                       placeholder="Password"
+                       placeholder="Password(대or소문자,숫자,특수문자를 포함 8~16자리)"
                        required >
+                <span id="userPwdError" class="error"></span><br>
                 <input type="password"
                        id="signup-password-confirm"
                        class="form-control form-control-password"
@@ -105,7 +108,23 @@
             alert(decodedError);
         }
 
+        $('#signup-form input').on('input', function() {
+            var fieldId = $(this).attr('id');
+            if(fieldId==='signup-email'){
+                fieldId='userId';
+            }
+            if(fieldId==='signup-username'){
+                fieldId='userName';
+            }
+            if(fieldId==='signup-password'){
+                fieldId='userPwd';
+            }
+
+            $('#' + fieldId + 'Error').text('');
+        });
+
         $('#signup-form').submit(function (event) {
+            event.preventDefault(); // 폼의 제출 기본 동작을 중단
             // 폼 데이터 가져오기
             var formData = {
                 userId: $('#signup-email').val(),
@@ -131,9 +150,12 @@
                     window.location.href = '/users/signup-login';
                 },
                 error: function (xhr, status, error) {
+                    var errors = xhr.responseJSON.fieldErrors;
+                    $.each(errors, function(field, errorMessage) {
+                        $('#' + field + 'Error').text(errorMessage); // 해당 필드 아래에 오류 메시지 표시
+                    });
                     // 오류 발생 시 오류 메시지 표시
-                    alert(xhr.responseText);
-                    window.location.href = '/users/signup-login';
+                    // alert(xhr.responseText);
                 }
             });
         });

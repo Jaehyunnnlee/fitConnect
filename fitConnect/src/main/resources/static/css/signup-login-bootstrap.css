@@ -206,9 +206,41 @@
     transform: translateY(10px);
 }
 
-@media (max-width: 768px) {
-    .wrapper-box {
-        margin: 0 auto; /* 가운데 정렬을 위한 margin 추가 */
-        max-width: 300px; /* 원하는 최대 너비로 설정 */
+/* 모바일 환경에 대한 스타일 */
+@media only screen and (max-width: 767px) {
+    .login-switcher {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        margin: 30px auto;
+        text-align: center; /* 스위처를 가운데 정렬 */
+    }
+    .login-content {
+        margin-top: 60px;
+    }
+    .login-switcher > div {
+        display: inline-block; /* 스위처 내부 요소들을 인라인 블록으로 표시 */
+        width: 50%;
+        float: none;
+        margin-top: 0;
+    }
+
+    .login-switcher > div button {
+        margin: 10px auto 0 auto;
+        padding: 8px 15px;
+    }
+
+    .login-content-signin,
+    .login-content-signup {
+        width: 90%; /* 너비를 조절하여 화면의 90% 너비를 차지하도록 설정합니다. */
+        max-width: 350px; /* 최대 너비를 지정하여 너비가 화면의 너비보다 크게되지 않도록 합니다. */
+        margin: 0 auto; /* 좌우 여백을 auto로 설정하여 가운데 정렬합니다. */
+        margin-top: 60px;
+        padding: 40px; /* 내부 여백을 추가하여 내용을 가운데에 위치시킵니다. */
+        box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1); /* 그림자 효과를 추가하여 요소를 부각시킵니다. */
+        border-top: 5px solid var(--green); /* 상단에 녹색 테두리를 추가합니다. */
+        background: #FFF; /* 배경색을 흰색으로 설정합니다. */
     }
 }
+
+
