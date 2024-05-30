@@ -1,9 +1,9 @@
 package fitConnect.restController;
 
-import lombok.RequiredArgsConstructor;
 import fitConnect.controller.dto.BoardRequestDto;
 import fitConnect.controller.dto.response.BoardResponseDto;
 import fitConnect.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -17,8 +17,6 @@ import java.util.Optional;
 @RequestMapping("/rest-api/boards")
 public class BoardRestController {
     private final BoardService boardService;
-
-
     @GetMapping("/posts")
     public ResponseEntity<List<BoardResponseDto>> getPosts() {
         List<BoardResponseDto> posts = boardService.getPosts();
@@ -45,9 +43,9 @@ public class BoardRestController {
         }
     }
 
-    @GetMapping("/users/{userId}/posts")
-    public ResponseEntity<Optional<List<BoardResponseDto>>> getPostByUserName(@PathVariable String userId) {
-        Optional<List<BoardResponseDto>> posts = boardService.getPostsByUserId(userId);
+    @GetMapping("/users/{userName}/posts")
+    public ResponseEntity<Optional<List<BoardResponseDto>>> getPostByUserName(@PathVariable("userName") String userName) {
+        Optional<List<BoardResponseDto>> posts = boardService.getPostsByUserName(userName);
         if (posts.isPresent()) {
             return ResponseEntity.ok(posts);
         } else {
