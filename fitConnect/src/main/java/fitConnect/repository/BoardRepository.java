@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface BoardRepository extends JpaRepository<Board,Long> {
     List<Board> findAllByOrderByModifiedAtDesc();
-    Optional<List<Board>> findAllByUserUserId (String userId);
+    Optional<List<Board>> findAllByUserUserName (String userName);
     Optional<Board> findByPostNum(Long postNum);
 }
