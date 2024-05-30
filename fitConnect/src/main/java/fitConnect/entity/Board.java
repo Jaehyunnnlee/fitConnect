@@ -15,7 +15,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-
 public class Board extends Timestamped{
 
     @Id
@@ -26,10 +25,10 @@ public class Board extends Timestamped{
     @Column(name="post_title",nullable = false,length=30)
     private String postTitle;
 
-    @Column(name="post_content",nullable = false,length = 300)
+    @Column(name="post_content",nullable = false,length = 5000)
     private String postContent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_user_id", referencedColumnName = "user_id", columnDefinition = "VARCHAR(255)", nullable = false)
     private User user;
 
