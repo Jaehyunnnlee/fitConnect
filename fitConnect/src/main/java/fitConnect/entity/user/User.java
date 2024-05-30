@@ -1,14 +1,14 @@
 package fitConnect.entity.user;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import lombok.Setter;
 import fitConnect.controller.dto.UserRequestDto;
 import fitConnect.entity.Board;
 import fitConnect.entity.Comment;
+import fitConnect.entity.Routine;
 import fitConnect.entity.Timestamped;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +38,9 @@ public class User extends Timestamped{
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
+    private List<Routine> routines=new ArrayList<>();
 
 
     public User(UserRequestDto requestDto){
