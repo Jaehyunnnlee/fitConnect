@@ -12,11 +12,13 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 
 -댓글/답글 기능
 
+-나의 운동 루틴 기록 및 공유 기능
+
 # System Architecture
-<img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/7104e8d3-a88b-4b3d-ae42-6418a80c4b23">
+<img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/8b0f67a7-5ea3-4147-8774-13f29858ee28">
 
 # ERD
-<img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/e25cb967-b5da-426d-8751-a0f0d4b3a112">
+<img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/8eae6dfa-ad21-421f-a9b5-bf455a202abc">
 
 # Stacks
 
@@ -31,6 +33,8 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 [fitConnect Web](http://18.224.105.242:8081)
 
 [fitConnect API 명세서](https://documenter.getpostman.com/view/32546490/2sA35EZ2k4)
+
+[개요 & 이슈 및 해결](https://uttermost-forger-7ef.notion.site/fitConnect-ff17dec45d8a4ef3ba3fb71f80a23955?pvs=4)
 
 <!-- ###### 메인페이지(로그인 전)
 <img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/645d80a3-030b-4977-8f75-8fa29a7e5394" width="600" height="400">
