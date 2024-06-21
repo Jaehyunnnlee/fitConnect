@@ -34,7 +34,7 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 
 [fitConnect API 명세서](https://documenter.getpostman.com/view/32546490/2sA35EZ2k4)
 
-[개요 & 이슈 및 해결](https://uttermost-forger-7ef.notion.site/fitConnect-ff17dec45d8a4ef3ba3fb71f80a23955?pvs=4)
+<!-- [개요 & 이슈 및 해결](https://uttermost-forger-7ef.notion.site/fitConnect-ff17dec45d8a4ef3ba3fb71f80a23955?pvs=4) -->
 
 <!-- ###### 메인페이지(로그인 전)
 <img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/645d80a3-030b-4977-8f75-8fa29a7e5394" width="600" height="400">
