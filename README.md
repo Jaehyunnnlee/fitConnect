@@ -32,6 +32,9 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 
 [fitConnect Web](http://18.224.105.242:8080)
 
+test ID=test
+test pwd=1234
+
 [fitConnect API 명세서](https://documenter.getpostman.com/view/32546490/2sA35EZ2k4)
 
 <!-- [개요 & 이슈 및 해결](https://uttermost-forger-7ef.notion.site/fitConnect-ff17dec45d8a4ef3ba3fb71f80a23955?pvs=4) -->
