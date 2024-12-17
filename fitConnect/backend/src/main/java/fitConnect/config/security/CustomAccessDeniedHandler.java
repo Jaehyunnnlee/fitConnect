@@ -1,7 +1,7 @@
 package fitConnect.config.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fitConnect.controller.dto.response.ErrorResponseDto;
+import fitConnect.dto.response.ErrorResponseDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
