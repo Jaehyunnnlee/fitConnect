@@ -1,7 +1,6 @@
 package fitConnect.config.security;
 
-import fitConnect.controller.dto.response.UserResponseDto;
-import fitConnect.entity.user.User;
+import fitConnect.dto.response.UserResponseDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

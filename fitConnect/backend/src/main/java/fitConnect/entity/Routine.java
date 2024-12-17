@@ -1,6 +1,6 @@
 package fitConnect.entity;
 
-import fitConnect.controller.dto.RoutineRequestDto;
+import fitConnect.dto.RoutineRequestDto;
 import fitConnect.entity.exerciseRoutine.ExerciseRoutine;
 import fitConnect.entity.user.User;
 import jakarta.persistence.*;

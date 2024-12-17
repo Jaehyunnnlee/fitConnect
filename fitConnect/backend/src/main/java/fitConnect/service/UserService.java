@@ -2,9 +2,9 @@ package fitConnect.service;
 
 import fitConnect.config.security.JwtProvider;
 import fitConnect.config.security.UserPrincipal;
-import fitConnect.controller.dto.UserRequestDto;
-import fitConnect.controller.dto.response.AccessTokenResponseDto;
-import fitConnect.controller.dto.response.UserResponseDto;
+import fitConnect.dto.UserRequestDto;
+import fitConnect.dto.response.AccessTokenResponseDto;
+import fitConnect.dto.response.UserResponseDto;
 import fitConnect.entity.user.Role;
 import fitConnect.entity.user.User;
 import fitConnect.repository.UserRepository;

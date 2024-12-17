@@ -1,6 +1,6 @@
 package fitConnect.entity.user;
 
-import fitConnect.controller.dto.UserRequestDto;
+import fitConnect.dto.UserRequestDto;
 import fitConnect.entity.Board;
 import fitConnect.entity.Comment;
 import fitConnect.entity.Routine;

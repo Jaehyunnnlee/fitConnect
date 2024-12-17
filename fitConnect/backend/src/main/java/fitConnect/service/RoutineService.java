@@ -1,7 +1,7 @@
 package fitConnect.service;
 
-import fitConnect.controller.dto.RoutineRequestDto;
-import fitConnect.controller.dto.response.RoutineResponseDto;
+import fitConnect.dto.RoutineRequestDto;
+import fitConnect.dto.response.RoutineResponseDto;
 import fitConnect.entity.Routine;
 import fitConnect.config.security.CustomUserDetails;
 import fitConnect.entity.user.User;

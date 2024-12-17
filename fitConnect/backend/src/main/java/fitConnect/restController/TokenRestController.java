@@ -1,8 +1,8 @@
 package fitConnect.restController;
 
 
-import fitConnect.controller.dto.AccessTokenRequestDto;
-import fitConnect.controller.dto.response.AccessTokenResponseDto;
+import fitConnect.dto.AccessTokenRequestDto;
+import fitConnect.dto.response.AccessTokenResponseDto;
 import fitConnect.service.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

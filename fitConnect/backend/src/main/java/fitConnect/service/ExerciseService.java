@@ -1,6 +1,6 @@
 package fitConnect.service;
 
-import fitConnect.controller.dto.response.ExerciseResponseDto;
+import fitConnect.dto.response.ExerciseResponseDto;
 import fitConnect.repository.ExerciseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

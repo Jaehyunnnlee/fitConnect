@@ -1,6 +1,6 @@
 package fitConnect.entity.exerciseRoutine;
 
-import fitConnect.controller.dto.ExerciseRoutineRequestDto;
+import fitConnect.dto.ExerciseRoutineRequestDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

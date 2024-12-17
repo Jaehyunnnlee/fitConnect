@@ -1,7 +1,7 @@
 package fitConnect.service;
 
-import fitConnect.controller.dto.CommentRequestDto;
-import fitConnect.controller.dto.response.CommentResponseDto;
+import fitConnect.dto.CommentRequestDto;
+import fitConnect.dto.response.CommentResponseDto;
 import fitConnect.entity.Board;
 import fitConnect.entity.Comment;
 import fitConnect.config.security.UserPrincipal;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

@@ -1,7 +1,7 @@
 package fitConnect.service;
 
-import fitConnect.controller.dto.ExerciseRoutineRequestDto;
-import fitConnect.controller.dto.response.ExerciseRoutineResponseDto;
+import fitConnect.dto.ExerciseRoutineRequestDto;
+import fitConnect.dto.response.ExerciseRoutineResponseDto;
 import fitConnect.entity.Exercise;
 import fitConnect.entity.Routine;
 import fitConnect.entity.exerciseRoutine.ExerciseRoutine;

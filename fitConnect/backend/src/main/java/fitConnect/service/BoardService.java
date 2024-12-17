@@ -1,11 +1,10 @@
 package fitConnect.service;
 
 import fitConnect.config.security.UserPrincipal;
-import fitConnect.controller.dto.response.BoardPageResponseDto;
-import fitConnect.controller.dto.response.BoardSummaryResponseDto;
+import fitConnect.dto.response.BoardPageResponseDto;
 import lombok.RequiredArgsConstructor;
-import fitConnect.controller.dto.response.BoardResponseDto;
-import fitConnect.controller.dto.BoardRequestDto;
+import fitConnect.dto.response.BoardResponseDto;
+import fitConnect.dto.BoardRequestDto;
 import fitConnect.entity.Board;
 import fitConnect.config.security.CustomUserDetails;
 import fitConnect.entity.user.User;

@@ -1,6 +1,6 @@
 package fitConnect.entity;
 
-import fitConnect.controller.dto.CommentRequestDto;
+import fitConnect.dto.CommentRequestDto;
 import fitConnect.entity.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package fitConnect.entity;
 
-import fitConnect.controller.dto.BoardRequestDto;
+import fitConnect.dto.BoardRequestDto;
 import fitConnect.entity.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

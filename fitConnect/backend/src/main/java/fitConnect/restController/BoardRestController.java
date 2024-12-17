@@ -1,12 +1,10 @@
 package fitConnect.restController;
 
-import fitConnect.controller.dto.BoardRequestDto;
-import fitConnect.controller.dto.response.BoardPageResponseDto;
-import fitConnect.controller.dto.response.BoardResponseDto;
-import fitConnect.controller.dto.response.BoardSummaryResponseDto;
+import fitConnect.dto.BoardRequestDto;
+import fitConnect.dto.response.BoardPageResponseDto;
+import fitConnect.dto.response.BoardResponseDto;
 import fitConnect.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

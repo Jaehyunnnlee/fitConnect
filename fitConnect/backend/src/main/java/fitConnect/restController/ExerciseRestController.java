@@ -1,6 +1,6 @@
 package fitConnect.restController;
 
-import fitConnect.controller.dto.response.ExerciseResponseDto;
+import fitConnect.dto.response.ExerciseResponseDto;
 import fitConnect.service.ExerciseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

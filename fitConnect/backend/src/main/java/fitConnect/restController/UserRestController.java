@@ -1,9 +1,9 @@
 package fitConnect.restController;
 
 
-import fitConnect.controller.dto.UserRequestDto;
-import fitConnect.controller.dto.response.AccessTokenResponseDto;
-import fitConnect.controller.dto.response.UserResponseDto;
+import fitConnect.dto.UserRequestDto;
+import fitConnect.dto.response.AccessTokenResponseDto;
+import fitConnect.dto.response.UserResponseDto;
 import fitConnect.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

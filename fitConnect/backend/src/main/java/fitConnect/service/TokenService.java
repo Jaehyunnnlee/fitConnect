@@ -1,7 +1,7 @@
 package fitConnect.service;
 
 import fitConnect.config.security.JwtProvider;
-import fitConnect.controller.dto.response.UserResponseDto;
+import fitConnect.dto.response.UserResponseDto;
 import fitConnect.entity.user.User;
 import fitConnect.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

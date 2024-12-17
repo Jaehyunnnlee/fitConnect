@@ -1,8 +1,8 @@
 package fitConnect.restController;
 
 import lombok.RequiredArgsConstructor;
-import fitConnect.controller.dto.CommentRequestDto;
-import fitConnect.controller.dto.response.CommentResponseDto;
+import fitConnect.dto.CommentRequestDto;
+import fitConnect.dto.response.CommentResponseDto;
 import fitConnect.service.CommentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;

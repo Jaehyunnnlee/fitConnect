@@ -1,8 +1,8 @@
 package fitConnect.restController;
 
 
-import fitConnect.controller.dto.RoutineRequestDto;
-import fitConnect.controller.dto.response.RoutineResponseDto;
+import fitConnect.dto.RoutineRequestDto;
+import fitConnect.dto.response.RoutineResponseDto;
 import fitConnect.config.security.CustomUserDetails;
 import fitConnect.service.RoutineService;
 import lombok.RequiredArgsConstructor;
