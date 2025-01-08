@@ -1,9 +1,11 @@
 # fitConnect
-프로젝트 기간:2024/01~
+
+프로젝트 기간:2024/01~ 2024/04
 
 개인 프로젝트
 
-# 프로젝트 목적 및 기능
+<!-- # 프로젝트 목적 및 기능
+
 SpringBoot를 이용한 헬스 커뮤니티 구현
 
 -Spring security를 이용한 로그인/회원가입/마이페이지(회원정보 수정,삭제) 기능
@@ -12,31 +14,35 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 
 -댓글/답글 기능
 
--나의 운동 루틴 기록 및 공유 기능
+-나의 운동 루틴 기록 및 공유 기능 -->
 
 # System Architecture
+
 <img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/8b0f67a7-5ea3-4147-8774-13f29858ee28">
 
 # ERD
+
 <img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/8eae6dfa-ad21-421f-a9b5-bf455a202abc">
 
 # Stacks
 
 ### Develop
-<img src="https://img.shields.io/badge/springBoot-6DB33F?style=for-the-badge&logo=springBoot&logoColor=white"> <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+
+<img src="https://img.shields.io/badge/springBoot-6DB33F?style=for-the-badge&logo=springBoot&logoColor=white"> <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 
 ### Deploy
+
 <img src="https://img.shields.io/badge/amazon ec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"> <img src="https://img.shields.io/badge/amazon rds-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white"> <img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
 
-# result
+<!-- # result
 
 [fitConnect Web](http://18.224.105.242:8080)
 
 test ID=test
 
-test pwd=1234
+test pwd=1234 -->
 
-[fitConnect API 명세서](https://documenter.getpostman.com/view/32546490/2sA35EZ2k4)
+<!-- [fitConnect API 명세서](https://documenter.getpostman.com/view/32546490/2sA35EZ2k4) -->
 
 <!-- [개요 & 이슈 및 해결](https://uttermost-forger-7ef.notion.site/fitConnect-ff17dec45d8a4ef3ba3fb71f80a23955?pvs=4) -->
 
@@ -45,7 +51,7 @@ test pwd=1234
 
 <details>
 <summary>결과물 더보기</summary>
-  
+
 ###### 메인페이지(로그인 후)
 <img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/1c0e32eb-cf9e-41c4-90f0-d20497bd7f6a" width="600" height="400">
 
