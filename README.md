@@ -18,7 +18,7 @@ SpringBoot를 이용한 헬스 커뮤니티 구현
 
 # System Architecture
 
-<img src="https://github.com/Jaehyunnnlee/fitConnect/assets/117609943/8b0f67a7-5ea3-4147-8774-13f29858ee28">
+<img src="https://github.com/user-attachments/assets/1d62f30e-988b-4103-856f-5538c251a608">
 
 # ERD
 
